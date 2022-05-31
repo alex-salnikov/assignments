@@ -55,7 +55,7 @@ def is_real_word(guess, words):
 # Another example, check_guess("taunt", "train") should return XO_O_
 
 def check_guess(in_guess, in_secret):
-    if(len(in_guess) != len(in_secret)):
+    if len(in_guess) != len(in_secret):
         return 'error'
 
     guess = in_guess.lower()
@@ -69,12 +69,12 @@ def check_guess(in_guess, in_secret):
         mask += m
 
     for i in range(0, len(guess)):
-        if(mask[i] != 'X'):
+        if mask[i] != 'X':
             mask2 = ''
             match = False
             for j in range(0, len(guess)):
                 m = mask[j]
-                if(match == False and m == '_'):
+                if not match and m == '_':
                     if guess[j] == secret[i]:
                         m = 'O'
                         match = True
@@ -94,7 +94,7 @@ def check_guess(in_guess, in_secret):
 # and checks if the guess is in the word list. If this is the case,
 # the guess is returned. Otherwise, the function asks the user for another guess.
 def next_guess(words):
-    while(True):
+    while True:
         new_guess = input('Please enter a guess: ').lower()
         if new_guess in words:
             return new_guess
@@ -115,14 +115,14 @@ def play():
     all_words = word_list()
     secret = random_word(all_words)
     #secret = 'birds'
-    print('secret:' + secret)
+    #print('secret:' + secret)
     count = 6
     win = False
-    while(count > 0):
+    while count > 0:
         guess = next_guess(all_words)
         mask  = check_guess(guess, secret)
         print(mask)
-        if(mask == 'X'*len(secret)):
+        if mask == 'X'*len(secret):
             print('You won!')
             return
         count -= 1

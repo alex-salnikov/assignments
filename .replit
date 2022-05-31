@@ -1,2 +1,2 @@
 language = "python"
-run = "python w5assignment.py"
+run = "python w7.py"
